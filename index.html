@@ -90,6 +90,9 @@
       font-size: 16px;
       cursor: pointer;
       margin-bottom: 10px;
+      animation: flyInLeft 1s ease-out forwards;
+      transform: translateX(-150%);
+      opacity: 0;
     }
 
     #fetchButton:hover {
@@ -104,6 +107,9 @@
       border-radius: 10px;
       font-size: 16px;
       background-color: #d3d3d3;
+      animation: flyInRight 1s ease-out forwards;
+      transform: translateX(150%);
+      opacity: 0;
     }
 
     #resultOutput {
@@ -120,9 +126,26 @@
       animation: slideInBottom 1.5s ease-out forwards;
     }
 
-    @keyframes slideInBottom {
-      from { transform: translateY(100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    @keyframes flyInLeft {
+      from {
+        transform: translateX(-150%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes flyInRight {
+      from {
+        transform: translateX(150%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
