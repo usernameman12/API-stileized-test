@@ -114,8 +114,7 @@
       const userUrl = document.getElementById("urlInput").value;
 
       if (userUrl) {
-        const formattedUrl = userUrl.startsWith("http") ? userUrl : `https://${userUrl}`;
-        const apiUrl = `https://getwebsiteclones.vercel.app/api?url=${encodeURIComponent(formattedUrl)}`;
+        const apiUrl = `https://getwebsiteclones.vercel.app/api?url=${encodeURIComponent(userUrl)}`;
 
         console.log("Fetching data from:", apiUrl); // Debugging line to check URL
 
