@@ -115,8 +115,8 @@
 
       if (userUrl) {
         // Ensure the URL has the correct protocol
-        const formattedUrl = userUrl.startsWith("http") ? userUrl : `https://${userUrl}`;
-        const apiUrl = `https://getwebsiteclones.vercel.app/api/${formattedUrl}`;
+        const formattedUrl = userUrl.startsWith("http") ? userUrl : `${userUrl}`;
+        const apiUrl = `https://getwebsiteclones.vercel.app/api?url=${formattedUrl}`;
         
         fetch(apiUrl)
           .then(response => {
