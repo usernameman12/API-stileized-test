@@ -80,23 +80,6 @@
       animation: blink 0.5s step-end infinite;
     }
 
-    div {
-      text-align: center;
-      opacity: 0;
-      animation: slideIn 1s ease-out forwards;
-    }
-
-    #urlInput {
-      width: 300px;
-      height: 40px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      margin: 10px 0;
-      background-color: #d3d3d3;
-    }
-
     #fetchButton {
       width: 100px;
       height: 40px;
@@ -106,18 +89,28 @@
       border-radius: 10px;
       font-size: 16px;
       cursor: pointer;
+      margin-bottom: 10px;
     }
 
     #fetchButton:hover {
       background-color: #16344a;
     }
 
+    #urlInput {
+      width: 300px;
+      height: 40px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      background-color: #d3d3d3;
+    }
+
     #resultOutput {
-      width: 80%;
-      max-width: 600px;
-      height: 100px;
+      width: 300px;
+      height: 40px;
       margin-top: 20px;
-      padding: 10px;
+      padding: 5px;
       background: #d3d3d3;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -125,11 +118,6 @@
       white-space: nowrap;
       opacity: 0;
       animation: slideInBottom 1.5s ease-out forwards;
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(-100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
     }
 
     @keyframes slideInBottom {
@@ -142,14 +130,11 @@
   <div class="snow"></div>
   <div class="header">orion is cool</div>
   <div>
-    <label for="urlInput" style="color: white;">enter a url (e.g., example.com):</label>
-    <input type="text" id="urlInput" placeholder="example.com">
     <button id="fetchButton">fetch</button>
-  </div>
-  <div id="resultContainer">
+    <input type="text" id="urlInput" placeholder="example.com">
     <pre id="resultOutput"></pre>
   </div>
-  
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const snowContainer = document.createElement("div");
