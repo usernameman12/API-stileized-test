@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Hub</title>
   <style>
     body {
       display: flex;
@@ -14,6 +14,27 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #1b2735, #090a0f);
+      overflow: hidden;
+    }
+    .header {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: typing 3s steps(15) forwards, blink 0.5s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; opacity: 1; }
+      to { width: 14ch; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .header:after {
+      content: '|';
+      border-right: 2px solid;
+      display: inline-block;
+      animation: blink 0.5s step-end infinite;
     }
     button {
       width: 150px;
@@ -24,20 +45,39 @@
       border-radius: 10px;
       font-size: 16px;
       cursor: pointer;
+      animation: flyInLeft 1s ease-out forwards;
+      transform: translateX(-150%);
+      opacity: 0;
+      margin: 10px 0;
     }
     button:hover {
       background-color: #16344a;
     }
+    @keyframes flyInLeft {
+      from {
+        transform: translateX(-150%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
-  <button id="redirectButton">About Blank Webview</button>
+  <div class="header">Launcher Hub</div>
+  <button id="redirectButton1">About:Blank webview</button>
+  <button id="redirectButton2">Another Site</button>
 
   <script>
-    document.getElementById("redirectButton").addEventListener("click", () => {
-      window.location.href = "https://usernameman12.github.io/Launcher-for-AboutBlank-webview/"; // Replace with your desired URL
+    document.getElementById("redirectButton1").addEventListener("click", () => {
+      window.location.href = "https://usernameman12.github.io/Launcher-for-AboutBlank-webview/";
+    });
+
+    document.getElementById("redirectButton2").addEventListener("click", () => {
+      window.location.href = "https://usernameman12.github.io/uv-Pr0xy/";
     });
   </script>
 </body>
 </html>
-
