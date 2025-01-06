@@ -103,7 +103,7 @@
   </style>
 </head>
 <body>
-  <div class="header">Orion</div>
+  <div class="header">Orion is cool</div>
   <div class="input-container">
     <button id="fetchButton">fetch</button>
     <input type="text" id="urlInput" placeholder="example.com">
@@ -116,22 +116,36 @@
       if (userUrl) {
         const apiUrl = `https://getwebsiteclones.vercel.app/api?url=${encodeURIComponent(userUrl)}`;
 
-        console.log("Fetching data from:", apiUrl); // Debugging line to check URL
+        console.log("Fetching data from:", apiUrl);
 
-        fetch(apiUrl)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`API error: ${response.status}`);
-            }
-            return response.text(); // Get raw response text
-          })
-          .then(data => {
-            document.getElementById("resultOutput").textContent = data; // Display raw data in the result box
-          })
-          .catch(error => {
-            console.error("Error fetching the API:", error);
-            document.getElementById("resultOutput").textContent = `Error: ${error.message}`;
-          });
+        // Timeout promise that will reject after 20 seconds
+        const timeout = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error("Request timed out after 20 seconds")), 20000)
+        );
+
+        // Fetch the API and race it with the timeout
+        Promise.race([
+          fetch(apiUrl)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`API error: ${response.status}`);
+              }
+              return response.text(); // Get raw response text
+            })
+            .then(data => {
+              document.getElementById("resultOutput").textContent = data; // Display raw data in the result box
+            })
+            .catch(error => {
+              console.error("Error fetching the API:", error);
+              document.getElementById("resultOutput").textContent = `Error: ${error.message}`;
+            }),
+          timeout // Timeout promise
+        ])
+        .catch(error => {
+          // If the timeout is triggered, this code will run
+          console.error("Request failed:", error);
+          document.getElementById("resultOutput").textContent = `Error: ${error.message}`;
+        });
       } else {
         alert("Please enter a valid URL.");
       }
