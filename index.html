@@ -72,14 +72,18 @@
 
   <script>
     const texts = [
-      "Launcher Hub",
-      "Welcome to the Hub",
-      "Explore New Tools",
-      "Your Gateway to Resources",
-      "Unlock the Possibilities"
+      "Orion = Firestarter Clone?",
+      "Welcome to the Hub🟧⬛",
+      "Turtles are my favorite",
+      "Most skidded thing ever",
+      "I'm good at CSS trust"
     ];
 
     const header = document.getElementById("header");
+
+    // Select a random string only once per page load
+    const randomIndex = Math.floor(Math.random() * texts.length);
+    const selectedText = texts[randomIndex];
 
     function typeWriterEffect(text, callback) {
       let i = 0;
@@ -100,8 +104,7 @@
     }
 
     function startTypewriterAnimation() {
-      const randomIndex = Math.floor(Math.random() * texts.length);
-      typeWriterEffect(texts[randomIndex], startTypewriterAnimation);
+      typeWriterEffect(selectedText);
     }
 
     startTypewriterAnimation();
