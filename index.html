@@ -20,21 +20,14 @@
       font-size: 2rem;
       color: #fff;
       margin-bottom: 20px;
-      opacity: 0;
-      animation: typing 3s steps(15) forwards, blink 0.5s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0; opacity: 1; }
-      to { width: 14ch; }
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid white;
+      width: 0;
+      animation: blink 0.5s step-end infinite;
     }
     @keyframes blink {
       50% { border-color: transparent; }
-    }
-    .header:after {
-      content: '|';
-      border-right: 2px solid;
-      display: inline-block;
-      animation: blink 0.5s step-end infinite;
     }
     button {
       width: 150px;
@@ -66,7 +59,7 @@
   </style>
 </head>
 <body>
-  <div class="header">Launcher Hub</div>
+  <div class="header" id="header"></div>
   <button id="redirectButton1">About:Blank webview</button>
   <button id="redirectButton2">Wild Card Gen</button>
   <button id="redirectButton3">Keep Awake</button>
@@ -78,6 +71,41 @@
   <button id="10">Schoolcheats</button>
 
   <script>
+    const texts = [
+      "Launcher Hub",
+      "Welcome to the Hub",
+      "Explore New Tools",
+      "Your Gateway to Resources",
+      "Unlock the Possibilities"
+    ];
+
+    const header = document.getElementById("header");
+
+    function typeWriterEffect(text, callback) {
+      let i = 0;
+      header.textContent = "";
+      header.style.width = `${text.length}ch`;
+
+      function type() {
+        if (i < text.length) {
+          header.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 100);
+        } else if (callback) {
+          setTimeout(callback, 1000);
+        }
+      }
+
+      type();
+    }
+
+    function startTypewriterAnimation() {
+      const randomIndex = Math.floor(Math.random() * texts.length);
+      typeWriterEffect(texts[randomIndex], startTypewriterAnimation);
+    }
+
+    startTypewriterAnimation();
+
     document.getElementById("redirectButton1").addEventListener("click", () => {
       window.location.href = "https://usernameman12.github.io/Launcher-for-AboutBlank-webview/";
     });
@@ -90,29 +118,29 @@
       window.location.href = "https://usernameman12.github.io/keepawake/";
     });
 
-        document.getElementById("5").addEventListener("click", () => {
+    document.getElementById("5").addEventListener("click", () => {
       window.location.href = "https://doxinator4000.vercel.app/getInfo?firstName=John&lastName=Doe&page=1";
     });
 
-     document.getElementById("6").addEventListener("click", () => {
+    document.getElementById("6").addEventListener("click", () => {
       window.location.href = "https://usernameman12.github.io/RiddleSchool/";
-     });
+    });
 
     document.getElementById("7").addEventListener("click", () => {
       window.location.href = "https://shsgames.github.io";
-     });
+    });
 
     document.getElementById("8").addEventListener("click", () => {
       window.location.href = "https://mass-unblocker-scraper-v2.onrender.com/";
-     });
+    });
 
     document.getElementById("9").addEventListener("click", () => {
       window.location.href = "https://kahoot.club/play";
-     });
+    });
 
     document.getElementById("10").addEventListener("click", () => {
       window.location.href = "https://cheatnetwork.eu/services";
-     });
+    });
   </script>
 </body>
 </html>
