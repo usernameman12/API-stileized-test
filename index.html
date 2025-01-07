@@ -13,9 +13,12 @@
       height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #1b2735, #090a0f);
+      background: url('https://img.freepik.com/free-vector/watercolor-purple-galaxy-background_23-2149249703.jpg') no-repeat center center fixed, 
+                  linear-gradient(to bottom, #1b2735, #090a0f);
+      background-size: cover;
       overflow: hidden;
     }
+
     .header {
       font-size: 2rem;
       color: #fff;
@@ -24,9 +27,11 @@
       white-space: nowrap;
       border-right: 2px solid white;
     }
+
     @keyframes blink {
       50% { border-color: transparent; }
     }
+
     button {
       width: 150px;
       height: 40px;
@@ -41,9 +46,11 @@
       opacity: 0;
       margin: 10px 0;
     }
+
     button:hover {
       background-color: #16344a;
     }
+
     @keyframes flyInLeft {
       from {
         transform: translateX(-150%);
@@ -54,10 +61,43 @@
         opacity: 1;
       }
     }
+
+    .snow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .snow span {
+      position: absolute;
+      display: block;
+      width: 5px;
+      height: 5px;
+      background: white;
+      opacity: 0.8;
+      border-radius: 50%;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="header" id="header"></div>
+  <div class="snow" id="snow"></div>
   <button id="redirectButton1">About:Blank webview</button>
   <button id="redirectButton2">Wild Card Gen</button>
   <button id="redirectButton3">Keep Awake</button>
@@ -70,54 +110,54 @@
 
   <script>
     const texts = [
-     "Orion = Firestarter Clone?",
-    "Welcome to the Hub🟧⬛",
-    "Turtles are my favorite",
-    "Most skidded thing ever",
-    "I'm good at CSS trust",
-    "I made this while shiting",
-    "RIP lil pepe",
-    "Taking whats not yours?? (ooo - oo)",
-    "Those are some dank memes bro",
-    "You're just here for the proxy scraper, aren't you?",
-    "Sorry John Smith",
-    "Hire me pls, I'll work for free",
-    "That's numberwang!",
-    "Don't run the jsfuck",
-    "orion = always tweaking?",  
-    "welcome to the void 🌌",  
-    "cats > dogs, sorry not sorry",  
-    "most cursed repo ever",  
-    "i'm a self-taught regex wizard",  
-    "i wrote this in 2 am delirium",  
-    "rip small brain solutions",  
-    "what's yours is mine, right?",  
-    "big o? never heard of her",  
-    "shiny things make me happy",  
-    "please star my repo for clout",  
-    "hire me, i love unpaid labor!",  
-    "that's ultrawhang!",  
-    "whatever you do, don't git push --force",  
-    "orion = chaos incarnate",  
-    "welcome to the dumpster fire 🔥",  
-    "frogs < turtles, fight me",  
-    "most unhinged thing you'll see today",  
-    "i'm basically stack overflow",  
-    "i coded this in a caffeine haze",  
-    "rip my sleep schedule",  
-    "borrowing without asking?? (yikes)",  
-    "that's not a bug, it's a feature!",  
-    "i see you",  
-    "shoutout to my one github star",  
-    "please endorse me on linkedin for 'vibes'",  
-    "that's Bullshit!",  
-    "don't pip install anything here",  
-    "password1234 is secure, right?",  
-    "i am the runtime error",  
-    "npm install self_destruction",  
-    "big brain energy, small brain execution",  
-    "this commit will haunt me forever",  
-    "ctrl v"
+      "Orion = Firestarter Clone?",
+      "Welcome to the Hub🟧⬛",
+      "Turtles are my favorite",
+      "Most skidded thing ever",
+      "I'm good at CSS trust",
+      "I made this while shiting",
+      "RIP lil pepe",
+      "Taking whats not yours?? (ooo - oo)",
+      "Those are some dank memes bro",
+      "You're just here for the proxy scraper, aren't you?",
+      "Sorry John Smith",
+      "Hire me pls, I'll work for free",
+      "That's numberwang!",
+      "Don't run the jsfuck",
+      "orion = always tweaking?",  
+      "welcome to the void 🌌",  
+      "cats > dogs, sorry not sorry",  
+      "most cursed repo ever",  
+      "i'm a self-taught regex wizard",  
+      "i wrote this in 2 am delirium",  
+      "rip small brain solutions",  
+      "what's yours is mine, right?",  
+      "big o? never heard of her",  
+      "shiny things make me happy",  
+      "please star my repo for clout",  
+      "hire me, i love unpaid labor!",  
+      "that's ultrawhang!",  
+      "whatever you do, don't git push --force",  
+      "orion = chaos incarnate",  
+      "welcome to the dumpster fire 🔥",  
+      "frogs < turtles, fight me",  
+      "most unhinged thing you'll see today",  
+      "i'm basically stack overflow",  
+      "i coded this in a caffeine haze",  
+      "rip my sleep schedule",  
+      "borrowing without asking?? (yikes)",  
+      "that's not a bug, it's a feature!",  
+      "i see you",  
+      "shoutout to my one github star",  
+      "please endorse me on linkedin for 'vibes'",  
+      "that's Bullshit!",  
+      "don't pip install anything here",  
+      "password1234 is secure, right?",  
+      "i am the runtime error",  
+      "npm install self_destruction",  
+      "big brain energy, small brain execution",  
+      "this commit will haunt me forever",  
+      "ctrl v"
     ];
 
     const header = document.getElementById("header");
@@ -182,6 +222,17 @@
     document.getElementById("10").addEventListener("click", () => {
       window.location.href = "https://cheatnetwork.eu/services";
     });
+
+    // Add falling snow
+    const snowContainer = document.getElementById('snow');
+    const snowflakes = 50; // Adjust for more or fewer snowflakes
+    for (let i = 0; i < snowflakes; i++) {
+      const snowflake = document.createElement('span');
+      snowflake.style.left = `${Math.random() * 100}vw`;
+      snowflake.style.animationDuration = `${2 + Math.random() * 5}s`;
+      snowflake.style.animationDelay = `${Math.random() * 3}s`;
+      snowContainer.appendChild(snowflake);
+    }
   </script>
 </body>
 </html>
