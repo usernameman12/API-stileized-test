@@ -23,8 +23,6 @@
       overflow: hidden;
       white-space: nowrap;
       border-right: 2px solid white;
-      width: 0;
-      animation: blink 0.5s step-end infinite;
     }
     @keyframes blink {
       50% { border-color: transparent; }
@@ -76,36 +74,33 @@
       "Welcome to the Hub🟧⬛",
       "Turtles are my favorite",
       "Most skidded thing ever",
-      "I'm good at CSS trust"
-      "I made this while shiting"
-      "RIP lil pepe"
-      "Taking whats not yours?? (ooo - oo)"
-      "Those are some dank memes bro"
-      "your just here for the proxy scraper arent you?"
-      "Sorry John Smith"
-      "Hire me pls ill work for free"
-      "That's numberwhang!"
-      "dont run the jsfuck"    
-        ];
+      "I'm good at CSS trust",
+      "I made this while shiting",
+      "RIP lil pepe",
+      "Taking whats not yours?? (ooo - oo)",
+      "Those are some dank memes bro",
+      "You're just here for the proxy scraper, aren't you?",
+      "Sorry John Smith",
+      "Hire me pls, I'll work for free",
+      "That's numberwang!",
+      "Don't run the jsfuck"
+    ];
 
     const header = document.getElementById("header");
 
     // Select a random string only once per page load
     const randomIndex = Math.floor(Math.random() * texts.length);
-    const selectedtext = texts[randomIndex];
+    const selectedText = texts[randomIndex];
 
-    function typeWriterEffect(text, callback) {
+    function typeWriterEffect(text) {
       let i = 0;
       header.textContent = "";
-      header.style.width = `${text.length}ch`;
 
       function type() {
         if (i < text.length) {
           header.textContent += text.charAt(i);
           i++;
           setTimeout(type, 100);
-        } else if (callback) {
-          setTimeout(callback, 1000);
         }
       }
 
