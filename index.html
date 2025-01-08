@@ -26,6 +26,7 @@
       overflow: hidden;
       white-space: nowrap;
       border-right: 2px solid white;
+      animation: blink 0.7s step-end infinite;
     }
 
     @keyframes blink {
@@ -41,10 +42,10 @@
       border-radius: 10px;
       font-size: 16px;
       cursor: pointer;
-      animation: flyInLeft 1s ease-out forwards;
-      transform: translateX(-150%);
-      opacity: 0;
       margin: 10px 0;
+      opacity: 0;
+      transform: translateX(-150%);
+      animation: flyInLeft 1s ease-out forwards;
     }
 
     button:hover {
@@ -107,7 +108,7 @@
   <button id="8">ProxyGrabber</button>
   <button id="9">Kahoot Hack</button>
   <button id="10">Schoolcheats</button>
-   <button id="11">Utopia Cloaked</button>
+  <button id="11">Utopia Cloaked</button>
 
   <script>
     const texts = [
@@ -167,79 +168,24 @@
       "riley is gay",
       "riley is gay",
       "riley is gay",
-    
     ];
 
     const header = document.getElementById("header");
+    const randomText = texts[Math.floor(Math.random() * texts.length)];
+    let index = 0;
 
-    // Select a random string only once per page load
-    const randomIndex = Math.floor(Math.random() * texts.length);
-    const selectedText = texts[randomIndex];
-
-    function typeWriterEffect(text) {
-      let i = 0;
-      header.textContent = "";
-
-      function type() {
-        if (i < text.length) {
-          header.textContent += text.charAt(i);
-          i++;
-          setTimeout(type, 100);
-        }
+    function typeWriterEffect() {
+      if (index < randomText.length) {
+        header.textContent += randomText.charAt(index);
+        index++;
+        setTimeout(typeWriterEffect, 100);
       }
-
-      type();
     }
+    typeWriterEffect();
 
-    function startTypewriterAnimation() {
-      typeWriterEffect(selectedText);
-    }
-
-    startTypewriterAnimation();
-
-    document.getElementById("redirectButton1").addEventListener("click", () => {
-      window.location.href = "https://usernameman12.github.io/Launcher-for-AboutBlank-webview/";
-    });
-
-    document.getElementById("redirectButton2").addEventListener("click", () => {
-      window.location.href = "https://wildcard-gen.tiiny.site/";
-    });
-
-    document.getElementById("redirectButton3").addEventListener("click", () => {
-      window.location.href = "https://usernameman12.github.io/keepawake/";
-    });
-
-    document.getElementById("5").addEventListener("click", () => {
-      window.location.href = "https://doxinator4000.vercel.app/getInfo?firstName=John&lastName=Doe&page=1";
-    });
-
-    document.getElementById("6").addEventListener("click", () => {
-      window.location.href = "https://usernameman12.github.io/RiddleSchool/";
-    });
-
-    document.getElementById("7").addEventListener("click", () => {
-      window.location.href = "https://shsgames.github.io";
-    });
-
-    document.getElementById("8").addEventListener("click", () => {
-      window.location.href = "https://mass-unblocker-scraper-v2.onrender.com/";
-    });
-
-    document.getElementById("9").addEventListener("click", () => {
-      window.location.href = "https://kahoot.club/play";
-    });
-
-    document.getElementById("10").addEventListener("click", () => {
-      window.location.href = "https://cheatnetwork.eu/services";
-    });
-
-      document.getElementById("11").addEventListener("click", () => {
-      window.location.href = "https://usernameman12.github.io/UtopiaLauncher";
-    });
-
-    // Add falling snow
+    // Falling snow
     const snowContainer = document.getElementById('snow');
-    const snowflakes = 50; // Adjust for more or fewer snowflakes
+    const snowflakes = 50;
     for (let i = 0; i < snowflakes; i++) {
       const snowflake = document.createElement('span');
       snowflake.style.left = `${Math.random() * 100}vw`;
