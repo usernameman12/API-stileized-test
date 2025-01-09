@@ -26,7 +26,6 @@
       overflow: hidden;
       white-space: nowrap;
       border-right: 2px solid white;
-      animation: blink 0.7s step-end infinite;
     }
 
     @keyframes blink {
@@ -42,10 +41,10 @@
       border-radius: 10px;
       font-size: 16px;
       cursor: pointer;
-      margin: 10px 0;
-      opacity: 0;
-      transform: translateX(-150%);
       animation: flyInLeft 1s ease-out forwards;
+      transform: translateX(-150%);
+      opacity: 0;
+      margin: 10px 0;
     }
 
     button:hover {
@@ -126,64 +125,130 @@
       "Hire me pls, I'll work for free",
       "That's numberwang!",
       "Don't run the jsfuck",
-      "orion = always tweaking?",  
-      "welcome to the void 🌌",  
-      "cats > dogs, sorry not sorry",  
-      "most cursed repo ever",  
-      "i'm a self-taught regex wizard",  
-      "i wrote this in 2 am delirium",  
-      "rip small brain solutions",  
-      "what's yours is mine, right?",  
-      "big o? never heard of her",  
-      "shiny things make me happy",  
-      "please star my repo for clout",  
-      "hire me, i love unpaid labor!",  
-      "that's ultrawhang!",  
-      "whatever you do, don't git push --force",  
-      "orion = chaos incarnate",  
-      "welcome to the dumpster fire 🔥",  
-      "frogs < turtles, fight me",  
-      "most unhinged thing you'll see today",  
-      "i'm basically stack overflow",  
-      "i coded this in a caffeine haze",  
-      "rip my sleep schedule",  
-      "borrowing without asking?? (yikes)",  
-      "that's not a bug, it's a feature!",  
-      "i see you",  
-      "shoutout to my one github star",  
-      "please endorse me on linkedin for 'vibes'",  
-      "that's Bullshit!",  
-      "don't pip install anything here",  
-      "password1234 is secure, right?",  
-      "i am the runtime error",  
-      "npm install self_destruction",  
-      "big brain energy, small brain execution",  
-      "this commit will haunt me forever",  
+      "orion = always tweaking?",
+      "welcome to the void 🌌",
+      "cats > dogs, sorry not sorry",
+      "most cursed repo ever",
+      "i'm a self-taught regex wizard",
+      "i wrote this in 2 am delirium",
+      "rip small brain solutions",
+      "what's yours is mine, right?",
+      "big o? never heard of her",
+      "shiny things make me happy",
+      "please star my repo for clout",
+      "hire me, i love unpaid labor!",
+      "that's ultrawhang!",
+      "whatever you do, don't git push --force",
+      "orion = chaos incarnate",
+      "welcome to the dumpster fire 🔥",
+      "frogs < turtles, fight me",
+      "most unhinged thing you'll see today",
+      "i'm basically stack overflow",
+      "i coded this in a caffeine haze",
+      "rip my sleep schedule",
+      "borrowing without asking?? (yikes)",
+      "that's not a bug, it's a feature!",
+      "i see you",
+      "shoutout to my one github star",
+      "please endorse me on linkedin for 'vibes'",
+      "that's Bullshit!",
+      "don't pip install anything here",
+      "password1234 is secure, right?",
+      "i am the runtime error",
+      "npm install self_destruction",
+      "big brain energy, small brain execution",
+      "this commit will haunt me forever",
       "ctrl v",
-      "riley is gay",
-      "riley is gay",
-      "riley is gay",
-      "riley is gay",
-      "riley is gay",
-      "riley is gay",
-      "riley is gay",
-      "riley is gay",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow",
+      "eyebrow"
     ];
 
     const header = document.getElementById("header");
-    const randomText = texts[Math.floor(Math.random() * texts.length)];
-    let index = 0;
 
-    function typeWriterEffect() {
-      if (index < randomText.length) {
-        header.textContent += randomText.charAt(index);
-        index++;
-        setTimeout(typeWriterEffect, 100);
+    // Select a random string only once per page load
+    const randomIndex = Math.floor(Math.random() * texts.length);
+    const selectedText = texts[randomIndex];
+
+    function typeWriterEffect(text) {
+      let i = 0;
+      header.textContent = "";
+
+      function type() {
+        if (i < text.length) {
+          header.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 100);
+        }
       }
-    }
-    typeWriterEffect();
 
-    // Falling snow
+      type();
+    }
+
+    function startTypewriterAnimation() {
+      typeWriterEffect(selectedText);
+    }
+
+    startTypewriterAnimation();
+
+    function openUrlInIframe(url) {
+      const win = window.open();
+      const iframe = win.document.createElement('iframe');
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      iframe.style.border = "none";
+      iframe.src = url;
+      win.document.body.appendChild(iframe);
+    }
+
+    document.getElementById("redirectButton1").addEventListener("click", () => {
+      openUrlInIframe("https://usernameman12.github.io/Launcher-for-AboutBlank-webview/");
+    });
+
+    document.getElementById("redirectButton2").addEventListener("click", () => {
+      openUrlInIframe("https://wildcard-gen.tiiny.site/");
+    });
+
+    document.getElementById("redirectButton3").addEventListener("click", () => {
+      openUrlInIframe("https://usernameman12.github.io/keepawake/");
+    });
+
+    document.getElementById("5").addEventListener("click", () => {
+      openUrlInIframe("https://doxinator4000.vercel.app/getInfo?firstName=John&lastName=Doe&page=1");
+    });
+
+    document.getElementById("6").addEventListener("click", () => {
+      openUrlInIframe("https://usernameman12.github.io/RiddleSchool/");
+    });
+
+    document.getElementById("7").addEventListener("click", () => {
+      openUrlInIframe("https://shsgames.github.io");
+    });
+
+    document.getElementById("8").addEventListener("click", () => {
+      openUrlInIframe("https://mass-unblocker-scraper-v2.onrender.com/");
+    });
+
+    document.getElementById("9").addEventListener("click", () => {
+      openUrlInIframe("https://kahoot.club/play");
+    });
+
+    document.getElementById("10").addEventListener("click", () => {
+      openUrlInIframe("https://cheatnetwork.eu/services");
+    });
+
+    document.getElementById("11").addEventListener("click", () => {
+      openUrlInIframe("https://usernameman12.github.io/UtopiaLauncher");
+    });
+
     const snowContainer = document.getElementById('snow');
     const snowflakes = 50;
     for (let i = 0; i < snowflakes; i++) {
