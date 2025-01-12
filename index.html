@@ -109,6 +109,7 @@
   <button id="10">Schoolcheats</button>
   <button id="11">Utopia Cloaked</button>
   <button id="12">YouTube File Downloader</button>
+  <button id="13">Discord Link Embedder</button>
 
   <script>
     const texts = [
@@ -253,7 +254,11 @@
     document.getElementById("12").addEventListener("click", () => {
       openUrlInIframe("https://youtube-file-grabber.vercel.app");
     });
-
+    
+    document.getElementById("13").addEventListener("click", () => {
+      openUrlInIframe("text2link.vercel.app");
+    });
+    
     const snowContainer = document.getElementById('snow');
     const snowflakes = 50;
     for (let i = 0; i < snowflakes; i++) {
